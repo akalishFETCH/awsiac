@@ -35,7 +35,7 @@ time_table_drop = "DROP TABLE IF EXISTS time_table"
 # CREATE TABLES
 
 staging_events_table_create= ("""CREATE TABLE staging_events_table (
-    event_id          BIGINT IDENTITY(0,1) NOT NULL
+    event_id          BIGINT IDENTITY(0,1) NOT NULL primary key
     ,artist           VARCHAR
     ,auth             VARCHAR
     ,firstName        VARCHAR
@@ -57,32 +57,32 @@ staging_events_table_create= ("""CREATE TABLE staging_events_table (
 """)
 
 staging_songs_table_create = ("""CREATE TABLE staging_songs_table (
-                num_songs           INTEGER         NULL,
+                num_songs           INTEGER              NULL,
                 artist_id           varchar(MAX)         NOT NULL SORTKEY DISTKEY,
                 artist_latitude     varchar(MAX)         NULL,
                 artist_longitude    varchar(MAX)         NULL,
-                artist_location     varchar(MAX)   NULL,
-                artist_name         varchar(MAX)   NULL,
+                artist_location     varchar(MAX)         NULL,
+                artist_name         varchar(MAX)         NULL,
                 song_id             varchar(MAX)         NOT NULL,
-                title               varchar(MAX)   NULL,
-                duration            DECIMAL(9)      NULL,
-                year                INTEGER         NULL);
+                title               varchar(MAX)         NULL,
+                duration            DECIMAL(9)           NULL,
+                year                INTEGER              NULL);
 """)
 
 songplay_table_create = ("""CREATE TABLE songplay_table (
-    songplay_id    integer identity(0,1) sortkey
+    songplay_id    integer identity(0,1) primary key sortkey
     ,start_time    timestamp             not null
-    ,user_id       varchar(MAX)                  not null distkey
-    ,level         VARCHAR                  not null
-    ,song_id       varchar(MAX)                  not null
-    ,artist_id     varchar(MAX)                  not null
-    ,session_id    integer                  not null
+    ,user_id       varchar(MAX)          not null distkey
+    ,level         VARCHAR               not null
+    ,song_id       varchar(MAX)          not null
+    ,artist_id     varchar(MAX)          not null
+    ,session_id    integer               not null
     ,location      VARCHAR
     ,user_agent    VARCHAR);
 """)
 
 user_table_create = ("""CREATE TABLE user_table (
-    user_id       varchar(MAX) not null sortkey
+    user_id       varchar(MAX) not null primary key sortkey
     ,first_name   VARCHAR
     ,last_name    VARCHAR
     ,gender       VARCHAR
@@ -90,7 +90,7 @@ user_table_create = ("""CREATE TABLE user_table (
 """)
 
 song_table_create = ("""CREATE TABLE song_table (
-    song_id       varchar(MAX) not null sortkey
+    song_id       varchar(MAX) not null primary key sortkey
     ,title        VARCHAR
     ,artist_id    VARCHAR
     ,year         smallint
@@ -98,7 +98,7 @@ song_table_create = ("""CREATE TABLE song_table (
 """)
 
 artist_table_create = ("""CREATE TABLE artist_table (
-    artist_id      varchar(MAX) not null sortkey
+    artist_id      varchar(MAX) not null primary key sortkey
     ,name         VARCHAR(MAX)
     ,location     VARCHAR(MAX)
     ,latitude     numeric
